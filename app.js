@@ -7,7 +7,7 @@ const app = express();
 app.get("/:verb/:adjective/:noun", (req, res) => {
   const { verb, adjective, noun } = req.params;
   res.send(
-    `Congratulations on starting a new project called ${verb}-${adjective}-${noun}`
+    `Congratulations on starting a new project called ${verb}-${adjective}-${noun}!`
   );
 });
 
@@ -20,7 +20,7 @@ app.get("/bugs", (req, res) => {
 app.get("/bugs/101", (req, res) => {
   const numberOfBugs = 103;
   res.send(
-    `101 little bugs in the code <a href='http://localhost:8888/bugs/${numberOfBugs}'>pull one down, patch it around</a>`
+    `101 little bugs in the code <a href='http://localhost:8888/bugs/${numberOfBugs}'>Pull one down\, patch it around</a>`
   );
 });
 
@@ -30,12 +30,11 @@ app.get("/bugs/:numberOfBugs", (req, res) => {
 
   if (numberOfBugs < 200) {
     res.send(
-      `${numberOfBugs} bugs left in the code <a href='http://localhost:8888/bugs/${sum}
-    '>pull one down, patch it around</a>`
+      `<a href='http://localhost:8888/bugs/${sum}'>Pull one down, patch it around</a> ${numberOfBugs} little bugs in the code`
     );
   } else {
     res.send(
-      `${numberOfBugs} bugs left in the code <a href='http://localhost:8888/bugs'>restart</a>`
+      `Too many bugs!! Start over! <a href='http://localhost:8888/bugs'>restart</a>`
     );
   }
 });
