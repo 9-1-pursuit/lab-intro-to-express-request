@@ -23,13 +23,13 @@ app.get(`/bugs`, (req, res) => {
   <a href=/bugs/101'>pull one down, patch it around</a>`);
 });
 
-app.get(`/bugs/:numberOfBugs`, (req, res) => {
+app.get("/bugs/:numberOfBugs", (req, res) => {
   const { numberOfBugs } = req.params;
   const addTwo = +numberOfBugs + 2;
 
   if (numberOfBugs < 200)
     res.send(
-      `${numberOfBugs} little bugs in the code <a href='${addTwo}'>Next</a>`
+      `<a href='*${addTwo}'>Pull one down, patch it around</a>${numberOfBugs} little bugs in the code `
     );
   if (numberOfBugs >= 200) res.send(`Too many bugs!! Start over!`);
 });
