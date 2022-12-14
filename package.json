@@ -9,6 +9,7 @@
     "dev": "nodemon server.js"
   },
   "name": "99-pokemon-express",
+  "type": "module",
   "version": "1.0.0",
   "main": "server.js",
   "author": "K. Rafalski",
