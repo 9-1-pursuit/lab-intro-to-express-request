@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 
 const bugsResponse = `<p>99 little bugs in the code</p>
-    <a href={\"\"} target=\"blank\">
+    <a href="" target="blank">
       pull one down, patch it around
     </a>`;
 app.get("/", (req, res) => {
