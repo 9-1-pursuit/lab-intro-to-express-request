@@ -24,7 +24,7 @@ app.get("/bugs/:numberofBugs", (req , res) => {
         res.send("Too many bugs!! Start over!")
     }
     else{
-        res.send(`<a href='*${+numberofBugs + 2}'>Pull one down, patch it around</a>${numberofBugs} little bugs in the code `)
+        res.send(`<a href='/bugs/${+numberofBugs + 2}'>Pull one down, patch it around</a>${numberofBugs} little bugs in the code `)
     }
 
 })
