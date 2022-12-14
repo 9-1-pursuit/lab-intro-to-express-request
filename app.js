@@ -20,7 +20,7 @@ app.get("/bugs", (req , res) => {
 
 app.get("/bugs/:numberOfBugs", (req , res) => {
     const {numberOfBugs} = req.params
-    if(numberofBugs >= 200){
+    if(numberOfBugs >= 200){
         res.send("Too many bugs!! Start over!")
     }
     else{
