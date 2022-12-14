@@ -24,7 +24,7 @@ app.get("/bugs/:numberofBugs", (req , res) => {
         res.send("Too many bugs!! Start over!")
     }
     else{
-        res.send(`<a href=/bugs/${+numberofBugs + 2}>"pull one down, patch it around"</a> ${numberofBugs} little bugs in the code`)
+        res.send(`<a href='*${+numberofBugs + 2}'>Pull one down, patch it around</a>${numberofBugs} little bugs in the code `)
     }
 
 })
@@ -38,14 +38,14 @@ app.get("/pokemon", (req , res) => {
 
 app.get("/pokemon/search", (req , res) => {
     const { name } = req.query
-
-for( let i = 0; i < pokemon.length; i++){
-    if(name.toLowerCase() === pokemon[i].name.toLowerCase()){
-          res.send([pokemon[i]])
-          }   
-       
-        }
-    
+pokemon.forEach((poke) => {
+    if(name.toLowerCase() === poke.name.toLowerCase()){
+     res.send([poke])
+    }
+    else{
+        res.send([])
+    }
+    }) 
 })
 
 
