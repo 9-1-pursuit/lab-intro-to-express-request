@@ -34,17 +34,15 @@ app.get('/pokemon', (req, res) => {
 
 //Search
 
-app.get('/pokemon/search', (req, res) => {
-  let { search } = req.params;
+app.get(`/pokemon/search`, (req, res) => {
+  const { name } = req.query;
 
-  let { name } = req.query;
-  name.toLowerCase();
-  console.log(name);
-  if (!search) {
-    res.send([]);
-  } else if (pokemon[search] === name) {
-    res.send(pokemon[req.params.search]);
-    // res.send(req.params.name.toLowercase() === name.toLowerCase());
+  for (let i = 0; i < pokemon.length; i++) {
+    if (name.toLowerCase() === pokemon[i].name.toLowerCase()) {
+      res.send([pokemon[i]]);
+    } else {
+      res.send([]);
+    }
   }
 });
 
