@@ -18,13 +18,13 @@ app.get("/bugs", (req , res) => {
     res.send("<h1>99 little bugs in the code</h1>")
 })
 
-app.get("/bugs/:numberofBugs", (req , res) => {
-    const {numberofBugs} = req.params
+app.get("/bugs/:numberOfBugs", (req , res) => {
+    const {numberOfBugs} = req.params
     if(numberofBugs >= 200){
         res.send("Too many bugs!! Start over!")
     }
     else{
-        res.send(`<a href='/bugs/${+numberofBugs + 2}'>Pull one down, patch it around</a>${numberofBugs} little bugs in the code `)
+        res.send(`<a href='/bugs/${+numberOfBugs + 2}'>Pull one down, patch it around</a>${numberOfBugs} little bugs in the code `)
     }
 
 })
