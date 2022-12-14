@@ -22,7 +22,7 @@ app.get('/bugs/:numberOfBugs', (req, res) => {
 
   if (numberOfBugs < 200)
     res.send(
-      `<a href='*${add}'>Next</a>${numberOfBugs} little bugs in the code `
+      `<a href='*${add}'>Pull one down, patch it around</a>${numberOfBugs} little bugs in the code `
     );
   if (numberOfBugs >= 200) res.send(`Too many bugs!! Start over!`);
 });
