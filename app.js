@@ -1,6 +1,9 @@
 const express = require("express")
 const app = express()
 
+const pokemon = require("./route/pokemon")
+app.use("/pokemon", pokemon)
+
 // Routes
 app.get("/", (req, resp) => {
     resp.send("Home")
