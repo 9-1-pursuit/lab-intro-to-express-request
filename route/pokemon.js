@@ -8,6 +8,13 @@ router.get("/", (req, resp) => {
     resp.send(list)
 })
 
+router.get("/search", (req, resp) => {
+    const input = req.query.name.toLowerCase()
+    const thisPokemon = data.find(({name}) => input === name.toLowerCase())
+    const display = thisPokemon ? thisPokemon : `sorry we failed to 'Catch 'em All! `
+    resp.send(display)
+})
+
 router.get("/:indexOfArray", (req, resp) => {
     const {indexOfArray} = req.params
     const thisPokemon = data[indexOfArray]
@@ -15,6 +22,8 @@ router.get("/:indexOfArray", (req, resp) => {
     resp.send(display)
 
 })
+
+
 
 
 
