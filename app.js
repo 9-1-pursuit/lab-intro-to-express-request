@@ -8,3 +8,9 @@ app.get("/attentive/overwhelmed/developer", (req, res) => {
     "Congratulations on starting a new project called attentive-overwhelemd-developer!"
   );
 });
+
+app.get("/bugs", (req, res) => {
+  res.send("99 little bugs in the code");
+});
+
+module.exports = app;
