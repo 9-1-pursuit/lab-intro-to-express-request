@@ -1,6 +1,8 @@
 //DEPENDENCIES
 const express = require("express");
 
+const pokemon = require("./models/pokemon.json");
+
 const app = express();
 
 //ROUTES
@@ -32,4 +34,7 @@ app.get("/bugs", (req, res) => {
   );
 });
 
+app.get("/pokemon", (req, res) => {
+  res.send(pokemon);
+});
 module.exports = app;
