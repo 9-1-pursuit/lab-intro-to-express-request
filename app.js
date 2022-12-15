@@ -10,13 +10,13 @@ app.get("/attentive/overwhelmed/developer", (req, res) => {
 });
 
 app.get("/bugs/:numberOfBugs", (req, res) => {
-  //   const { numOfBugs } = re.params;
-
-  //   if (numOfBugs > 200) res.send("<a href=/bugs>start over</a>");
-  //   else
-  res.send(
-    "101 little bugs in the code<a href=/bugs/103 >pull one down, patch it around </a>"
-  );
+  const { numberOfBugs } = req.params;
+  console.log(numberOfBugs);
+  if (numberOfBugs > 200) res.send("<a href=/bugs>start over</a>");
+  else
+    res.send(
+      "101 little bugs in the code<a href=/bugs/103 >pull one down, patch it around </a>"
+    );
 });
 
 app.get("/bugs", (req, res) => {
