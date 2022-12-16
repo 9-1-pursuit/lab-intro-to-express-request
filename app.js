@@ -10,11 +10,13 @@ app.get("/", (req, res) => {
   res.send("Welcome 99 Pokemon");
 });
 
-app.get("/semiattentive/overwhelmed/developer", (req, res) => {
+app.get("/:verb/:adjective/:noun", (req, res) => {
+  const { verb, adjective, noun } = req.params;
   res.send(
-    "Congratulations on starting a new project called attentive-overwhelemd-developer"
+    `Congratulations on starting a new project called ${verb}-${adjective}-${noun}!`
   );
 });
+
 app.get("/bugs/:numberOfBugs", (req, res) => {
   const { numberOfBugs } = req.params;
   console.log(numberOfBugs);
@@ -38,19 +40,20 @@ app.get("/pokemon", (req, res) => {
   res.send(pokemon);
 });
 
-app.get("/pokemon/:index", (req, res) => {
-  const { index } = req.params;
-  if (pokemon[index]) res.send(pokemon[index]);
-  else res.send(`Sorry, no pokemon found at ${index}`);
-});
-
 app.get("/pokemon/search", (req, res) => {
   const { name } = req.query;
   const foundPokemon = pokemon.find((poke) => {
-    return poke.name.toUpperCase() === name.toUpperCase();
+    return poke.name.toLowerCase() === name.toLowerCase();
   });
 
-  if (foundPokemon) res.send(foundPokemon);
+  app.get("/pokemon/:index", (req, res) => {
+    const { index } = req.params;
+    if (pokemon[index]) res.send(pokemon[index]);
+    else res.send(`Sorry, no pokemon found at ${index}`);
+  });
+  if (foundPokemon) res.send([foundPokemon]);
+  //   return;
+  else res.send([]);
 });
 
 module.exports = app;
