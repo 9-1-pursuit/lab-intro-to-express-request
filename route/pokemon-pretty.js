@@ -25,6 +25,23 @@ router.get("/all", (req, resp) => {
     resp.send(display)
 })
 
+// bonus add the search query 'type' i.e : http://localhost:8888/pokemon-pretty/search?type=grass
+router.get("/search", (req, resp) => {
+    const input = req.query.type.toLowerCase()
+    const thesePokemon = []
+    data.forEach(obj => {
+        obj.type.forEach(el => {
+            if(el.toLowerCase() === input){
+                thesePokemon.push(obj)
+            }
+        } )
+    }      
+    )
+    const display = thesePokemon ? thesePokemon : `sorry we failed to 'Catch 'em All! `
+    
+    resp.send(display)
+})
+
 // Bonus display name image and info
 router.get("/:indexOfArray", (req, resp) => {
     const {indexOfArray} = req.params
