@@ -13,6 +13,14 @@ app.use("/pokemon-pretty", pokemonPretty)
 // to send html file in resp
 app.use(express.static(path.join(__dirname, 'public')))
 
+// cors ???
+const cors = require("cors")
+app.use(cors())
+// app.use(cors({
+//     origin: 'http://localhost:3000'
+//   }))
+
+
 // Routes
 app.get("/", (req, resp) => {
     resp.send(`Welcome 99 Pokemon`)

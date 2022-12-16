@@ -1,4 +1,4 @@
 console.log('Hi')
-const pokeData = require("../models/pokemon.json")
+// const pokeData = require("../models/pokemon.json")
 
 
