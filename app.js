@@ -1,13 +1,13 @@
 //DEPENDENCIES
 const express = require("express")
-// const morgan = require("morgan")
+const morgan = require("morgan")
 const pokemon = require("./models/pokemon.json");
 
 //CONFIGURATION
 const app = express()
 
 //MIDDLEWARE
-// app.use(morgan("tiny"))
+app.use(morgan("tiny"))
 
 //ROUTES
 app.get("/", (req, res) => {
@@ -19,12 +19,12 @@ app.get("/:verb/:adjective/:noun", (req, res) => {
     res.send(`Congratulations on starting a new project called ${verb}-${adjective}-${noun}!`)
 })
 
+//ROUTES FOR BUGS
 app.get("/bugs", (req, res) => {
     res.send(
         "<h1>99 little bugs in the code</h1><a href=/bugs/101>Pull one down, patch it around</a>"
       );
   })
-
 
 app.get("/bugs/:numberOfBugs", (req, res) => {
     const { numberOfBugs } = req.params
@@ -35,6 +35,7 @@ app.get("/bugs/:numberOfBugs", (req, res) => {
     } 
 }) 
 
+//ROUTES FOR POKEMON
 app.get("/pokemon", (req, res) => {
     res.send(pokemon)
 })
@@ -58,13 +59,18 @@ app.get("/pokemon/:indexOfArray", (req, res) => {
     }
 })
 
+//ROUTES FOR BONUSES
 app.get("/pokemon-pretty", (req, res) => {
     pokemon.map(poke => res.send(`<ul><li><a href=/pokemon-pretty/${pokemon.indexOf(poke)}>${poke.name}</a></li></ul>`))
 })
 
 app.get("/pokemon-pretty/:indexOfArray", (req, res) => {
     const { indexOfArray } = req.params
-    res.send(`<h1>${pokemon[indexOfArray].name}</h1><img src=${pokemon[indexOfArray].img} alt=${pokemon[indexOfArray]}></img>`)
+    if(pokemon[indexOfArray]){
+        res.send(`<h1>${pokemon[indexOfArray].name}</h1><img src=${pokemon[indexOfArray].img} alt=${pokemon[indexOfArray].name}></img>`)
+    } else {
+        res.send(`Sorry, no pokemon found at ${indexOfArray}`)
+    }
 })
 
 //EXPORT
