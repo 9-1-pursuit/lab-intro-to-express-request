@@ -1,10 +1,13 @@
 //DEPENDENCIES
 const express = require("express")
+// const morgan = require("morgan")
 const pokemon = require("./models/pokemon.json");
-console.log(pokemon[0]);
 
 //CONFIGURATION
 const app = express()
+
+//MIDDLEWARE
+// app.use(morgan("tiny"))
 
 //ROUTES
 app.get("/", (req, res) => {
@@ -33,7 +36,17 @@ app.get("/bugs/:numberOfBugs", (req, res) => {
 }) 
 
 app.get("/pokemon", (req, res) => {
-    res.json(pokemon)
+    res.send(pokemon)
+})
+
+app.get("/pokemon/search", (req, res) => {
+    const { name } = req.query
+    const match = pokemon.filter((poke) => poke.name.toLowerCase() === name.toLowerCase())
+    if(match){
+        res.send(match)
+    } else {
+        res.send("[]")
+    }
 })
 
 app.get("/pokemon/:indexOfArray", (req, res) => {
@@ -45,7 +58,14 @@ app.get("/pokemon/:indexOfArray", (req, res) => {
     }
 })
 
+app.get("/pokemon-pretty", (req, res) => {
+    pokemon.map(poke => res.send(`<ul><li><a href=/pokemon-pretty/${pokemon.indexOf(poke)}>${poke.name}</a></li></ul>`))
+})
 
+app.get("/pokemon-pretty/:indexOfArray", (req, res) => {
+    const { indexOfArray } = req.params
+    res.send(`<h1>${pokemon[indexOfArray].name}</h1><img src=${pokemon[indexOfArray].img} alt=${pokemon[indexOfArray]}></img>`)
+})
 
 //EXPORT
 module.exports = app
