@@ -10,9 +10,9 @@ app.get("/", (req, res) => {
 app.get("/bugs", (req, res) => {
   const bugs = 99;
   const data = `<p>${bugs} little bugs in the code</p>
-    <a href="http://localhost:8888/bugs/${Number(bugs) + Number(2)}">
-      pull one down, patch it around
-    </a>`;
+    <a href=http://localhost:8888/bugs/${
+      Number(bugs) + Number(2)
+    }>Pull one down, patch it around</a>`;
   res.send(data);
 });
 
@@ -20,16 +20,15 @@ app.get("/bugs/:numberOfBugs", (req, res) => {
   const { numberOfBugs } = req.params;
   let data = "";
 
-  if (numberOfBugs > 200) {
+  if (numberOfBugs >= 200) {
     data = `<p>${numberOfBugs} little bugs in the code</p>
-      <a href="http://localhost:8888/bugs">
-        start over
-      </a>`;
+      <a href=http://localhost:8888/bugs>
+      Too many bugs!! Start over!</a>`;
   } else {
     data = `<p>${numberOfBugs} little bugs in the code</p>
-      <a href="http://localhost:8888/bugs/${Number(numberOfBugs) + Number(2)}">
-        pull one down, patch it around
-      </a>`;
+      <a href=http://localhost:8888/bugs/${
+        Number(numberOfBugs) + Number(2)
+      }>Pull one down, patch it around</a>`;
   }
 
   res.send(data);
