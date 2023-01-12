@@ -43,7 +43,7 @@ app.get('/bugs/:numberOfBugs', (req, res) => {
 
 // POKEMON ROUTES
 app.get('/', (req, res) => {
-    res.send('Welcome to 99 Pokemon')
+    res.send('Welcome 99 Pokemon')
 })
 
 app.get('/pokemon', (req, res) => {
@@ -65,8 +65,8 @@ app.get('/pokemon/:arrayIndex', (req, res) => {
     if (arrayIndex < pokemon.length) {
         res.send(pokemon[arrayIndex])
     } else {
-        res.send(`Sorry, no Pokemon found at ${arrayIndex}!`)
+        res.send(`Sorry, no pokemon found at ${arrayIndex}`)
     }
 })
 
-modules.exports = app;
+module.exports = app;
